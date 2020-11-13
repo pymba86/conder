@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Conder.WebApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,19 +14,20 @@ namespace Conder.Samples.Services.Orders
                 .Build()
                 .RunAsync();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.ConfigureServices(services => services
                             .AddConder()
+                            .AddErrorHandler<ExceptionToResponseMapper>()
+                            .AddWebApi()
                             .Build())
                         .Configure(app => app
                             .UseConder()
-                            .UseRouting()
+                            .UseErrorHandler()
                             .UseEndpoints(endpoints => endpoints
-                                .MapGet("/",
-                                    async context => { await context.Response.WriteAsync("Hello World!"); })
+                                .Get("/", ctx => ctx.Response.WriteAsync("Order service"))
                             )
                         );
                 });

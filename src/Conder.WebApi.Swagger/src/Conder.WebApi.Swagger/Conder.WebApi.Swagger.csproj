@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Conder.Docs.Swagger\src\Conder.Docs.Swagger\Conder.Docs.Swagger.csproj" />
+      <ProjectReference Include="..\..\..\Conder.WebApi\src\Conder.WebApi\Conder.WebApi.csproj" />
+    </ItemGroup>
+
+</Project>

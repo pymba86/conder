@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\Conder.WebApi\src\Conder.WebApi\Conder.WebApi.csproj" />
       <ProjectReference Include="..\..\src\Conder\src\Conder\Conder.csproj" />
     </ItemGroup>
 </Project>
