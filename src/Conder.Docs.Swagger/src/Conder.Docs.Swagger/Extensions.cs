@@ -85,7 +85,7 @@ namespace Conder.Docs.Swagger
             {
                 c.RoutePrefix = routePrefix;
                 c.SwaggerEndpoint(
-                    $"{routePrefix}/{options.Name}/swagger.json".FormatEmptyRoutePrefix(),
+                    $"/{routePrefix}/{options.Name}/swagger.json".FormatEmptyRoutePrefix(),
                     options.Title);
             });
         }

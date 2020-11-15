@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
+using Conder.Docs.Swagger;
 using Conder.WebApi;
-using Microsoft.AspNetCore.Builder;
+using Conder.WebApi.Swagger;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
@@ -22,12 +23,15 @@ namespace Conder.Samples.Services.Orders
                             .AddConder()
                             .AddErrorHandler<ExceptionToResponseMapper>()
                             .AddWebApi()
+                            .AddWebApiSwaggerDocs()
                             .Build())
                         .Configure(app => app
                             .UseConder()
                             .UseErrorHandler()
+                            .UseSwaggerDocs()
                             .UseEndpoints(endpoints => endpoints
-                                .Get("/", ctx => ctx.Response.WriteAsync("Order service"))
+                                .Get("", ctx => ctx.Response.WriteAsync("Orders service"))
+                                .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
                             )
                         );
                 });

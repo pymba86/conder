@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Conder.WebApi.Swagger.Filters
 {
-internal sealed class WebApiDocumentFilter : IDocumentFilter
+    internal sealed class WebApiDocumentFilter : IDocumentFilter
     {
         private readonly WebApiEndpointDefinitions _definitions;
         private const string InBody = "body";
@@ -28,14 +28,15 @@ internal sealed class WebApiDocumentFilter : IDocumentFilter
                     return item.Operations[OperationType.Put];
                 case "DELETE":
                     item.AddOperation(OperationType.Delete, new OpenApiOperation());
-                    return item.Operations[OperationType.Delete]; 
+                    return item.Operations[OperationType.Delete];
             }
+
             return null;
         };
 
         public WebApiDocumentFilter(WebApiEndpointDefinitions definitions)
             => _definitions = definitions;
-        
+
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
             foreach (var definition in _definitions)
@@ -79,7 +80,8 @@ internal sealed class WebApiDocumentFilter : IDocumentFilter
                     {
                         Content = new Dictionary<string, OpenApiMediaType>
                         {
-                            { "body", new OpenApiMediaType
+                            {
+                                "body", new OpenApiMediaType
                                 {
                                     Schema = new OpenApiSchema
                                     {
@@ -91,7 +93,7 @@ internal sealed class WebApiDocumentFilter : IDocumentFilter
                         }
                     });
                 }
-                
+
                 swaggerDoc.Paths.Add($"/{definition.Path}", pathItem);
             }
         }

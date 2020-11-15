@@ -8,5 +8,6 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\Conder.WebApi\src\Conder.WebApi\Conder.WebApi.csproj" />
       <ProjectReference Include="..\..\src\Conder\src\Conder\Conder.csproj" />
+        <ProjectReference Include="..\..\src\Conder.WebApi.Swagger\src\Conder.WebApi.Swagger\Conder.WebApi.Swagger.csproj" />
     </ItemGroup>
 </Project>
