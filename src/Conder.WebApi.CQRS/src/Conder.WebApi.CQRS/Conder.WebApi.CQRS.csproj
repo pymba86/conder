@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Conder.CQRS.Commands\src\Conder.CQRS.Commands\Conder.CQRS.Commands.csproj" />
+        <ProjectReference Include="..\..\..\Conder.CQRS.Events\src\Conder.CQRS.Events\Conder.CQRS.Events.csproj" />
+        <ProjectReference Include="..\..\..\Conder.CQRS.Queries\src\Conder.CQRS.Queries\Conder.CQRS.Queries.csproj" />
+        <ProjectReference Include="..\..\..\Conder.WebApi\src\Conder.WebApi\Conder.WebApi.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+</Project>
