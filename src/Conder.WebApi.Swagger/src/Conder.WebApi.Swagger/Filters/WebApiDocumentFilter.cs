@@ -10,6 +10,7 @@ namespace Conder.WebApi.Swagger.Filters
     internal sealed class WebApiDocumentFilter : IDocumentFilter
     {
         private readonly WebApiEndpointDefinitions _definitions;
+        
         private const string InBody = "body";
         private const string InQuery = "query";
 
