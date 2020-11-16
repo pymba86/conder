@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Conder.Samples.Services.Orders
 {
-    public class Program
+    public static class Program
     {
         public static async Task Main(string[] args)
             => await CreateHostBuilder(args)
