@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Conder\src\Conder\Conder.csproj" />
+        <ProjectReference Include="..\..\..\Conder.HTTP\src\Conder.HTTP\Conder.HTTP.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.3" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.3" />
+    </ItemGroup>
+    
+</Project>
