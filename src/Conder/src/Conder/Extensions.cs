@@ -55,12 +55,12 @@ namespace Conder
             return model;
         }
 
-        public static TModel GetOptions<TModel>(this IConderBuilder builder, string settingsSectionName)
+        public static TModel GetOptions<TModel>(this IConderBuilder builder, string sectionName)
             where TModel : new()
         {
             using var serviceProvider = builder.Services.BuildServiceProvider();
             var configuration = serviceProvider.GetService<IConfiguration>();
-            return configuration.GetOptions<TModel>(settingsSectionName);
+            return configuration.GetOptions<TModel>(sectionName);
         }
     }
 }

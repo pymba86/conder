@@ -5,6 +5,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\Conder\src\Conder\Conder.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
 </Project>
