@@ -63,7 +63,7 @@ namespace Conder.Gateway.Routing
                 if (string.IsNullOrWhiteSpace(service.LocalUrl))
                 {
                     throw new ArgumentException($"Local URL for: '{basePath}'" +
-                                                $"cannot be empty if useLocalUrl = true");
+                                                "cannot be empty if useLocalUrl = true");
                 }
 
                 return SetProtocol(route.Downstream.Replace(basePath, service.LocalUrl));

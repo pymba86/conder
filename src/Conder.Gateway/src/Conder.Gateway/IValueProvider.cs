@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Conder.Gateway
 {
-    internal interface IValueProvider
+    public interface IValueProvider
     {
         IEnumerable<string> Tokens { get; }
         string Get(string value, HttpRequest request, RouteData data);

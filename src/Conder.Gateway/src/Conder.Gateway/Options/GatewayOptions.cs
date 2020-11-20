@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using Conder.Gateway.Configuration;
+using Conder.Gateway.Extensions;
 
 namespace Conder.Gateway.Options
 {
     public class GatewayOptions : IOptions
     {
+        public bool? PassQueryString { get; set; }
         public ResourceId ResourceId { get; set; }
         public LoadBalancer LoadBalancer { get; set; }
         public bool? ForwardRequestHeaders { get; set; }
@@ -16,5 +18,6 @@ namespace Conder.Gateway.Options
         public bool? GenerateRequestId { get; set; }
         public bool? GenerateTraceId { get; set; }
         public bool UseLocalUrl { get; set; }
+        public IDictionary<string, ExtensionOptions> Extensions { get; set; }
     }
 }
