@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Conder.Gateway
 {
-    internal interface IDownstreamBuilder
+    public interface IDownstreamBuilder
     {
         string GetDownstream(RouteConfig routeConfig, HttpRequest request, RouteData data);
     }

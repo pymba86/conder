@@ -2,7 +2,7 @@ using Conder.Gateway.Configuration;
 
 namespace Conder.Gateway
 {
-    internal interface IUpstreamBuilder
+    public interface IUpstreamBuilder
     {
         string Build(Module module, Route route);
     }
