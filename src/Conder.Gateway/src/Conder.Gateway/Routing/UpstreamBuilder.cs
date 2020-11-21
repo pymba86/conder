@@ -69,7 +69,7 @@ namespace Conder.Gateway.Routing
                 }
             }
             
-            _logger.LogInformation($"Added route for upstream [{string.Join(", ", methods)}]" +
+            _logger.LogInformation($"Added route for upstream [{string.Join(", ", methods)}] " +
                                    $"'{upstream}' -> {routeInfo}");
 
             return upstream;

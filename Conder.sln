@@ -78,6 +78,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD3D8636-C24
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conder.Gateway", "src\Conder.Gateway\src\Conder.Gateway\Conder.Gateway.csproj", "{BBED0826-BD4A-4289-925B-8FDB436BF455}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condersp.Services.Gateway", "samples\Condersp.Services.Gateway\Condersp.Services.Gateway.csproj", "{96594B49-84EF-4DA0-8E06-5E3F94E475D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,7 @@ Global
 		{6F5B6678-0D1B-438F-9EDF-F2ED8602E3C7} = {B5E00040-EAA6-4C65-A736-7C010B542DC6}
 		{BD3D8636-C24D-4F8A-9243-66327C8FE82B} = {6F5B6678-0D1B-438F-9EDF-F2ED8602E3C7}
 		{BBED0826-BD4A-4289-925B-8FDB436BF455} = {BD3D8636-C24D-4F8A-9243-66327C8FE82B}
+		{96594B49-84EF-4DA0-8E06-5E3F94E475D9} = {398AB9CD-C7BD-4E7F-A02C-31089BDDD3F7}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C0A1CF7E-2F67-45EE-B538-38A3054F685E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -175,5 +178,9 @@ Global
 		{BBED0826-BD4A-4289-925B-8FDB436BF455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBED0826-BD4A-4289-925B-8FDB436BF455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBED0826-BD4A-4289-925B-8FDB436BF455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96594B49-84EF-4DA0-8E06-5E3F94E475D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96594B49-84EF-4DA0-8E06-5E3F94E475D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96594B49-84EF-4DA0-8E06-5E3F94E475D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96594B49-84EF-4DA0-8E06-5E3F94E475D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

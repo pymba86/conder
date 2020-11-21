@@ -6,6 +6,8 @@ namespace Conder.Gateway.Options
 {
     public class GatewayOptions : IOptions
     {
+        public Http Http { get; set; }
+        public bool UseForwardedHeaders { get; set; }
         public bool? PassQueryString { get; set; }
         public ResourceId ResourceId { get; set; }
         public LoadBalancer LoadBalancer { get; set; }
