@@ -80,6 +80,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conder.Gateway", "src\Conde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condersp.Services.Gateway", "samples\Condersp.Services.Gateway\Condersp.Services.Gateway.csproj", "{96594B49-84EF-4DA0-8E06-5E3F94E475D9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conder.LoadBalancing.Fabio", "Conder.LoadBalancing.Fabio", "{E2457DA7-53FC-4044-BBB2-62C2ACF9A0DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{87CF0914-9930-4020-85B3-C4D7A29450F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conder.LoadBalancing.Fabio", "src\Conder.LoadBalancing.Fabio\src\Conder.LoadBalancing.Fabio\Conder.LoadBalancing.Fabio.csproj", "{D1A5CAEB-5BF1-4A86-B24A-AD92ADEC9766}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +130,9 @@ Global
 		{BD3D8636-C24D-4F8A-9243-66327C8FE82B} = {6F5B6678-0D1B-438F-9EDF-F2ED8602E3C7}
 		{BBED0826-BD4A-4289-925B-8FDB436BF455} = {BD3D8636-C24D-4F8A-9243-66327C8FE82B}
 		{96594B49-84EF-4DA0-8E06-5E3F94E475D9} = {398AB9CD-C7BD-4E7F-A02C-31089BDDD3F7}
+		{E2457DA7-53FC-4044-BBB2-62C2ACF9A0DA} = {B5E00040-EAA6-4C65-A736-7C010B542DC6}
+		{87CF0914-9930-4020-85B3-C4D7A29450F6} = {E2457DA7-53FC-4044-BBB2-62C2ACF9A0DA}
+		{D1A5CAEB-5BF1-4A86-B24A-AD92ADEC9766} = {87CF0914-9930-4020-85B3-C4D7A29450F6}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C0A1CF7E-2F67-45EE-B538-38A3054F685E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -182,5 +191,9 @@ Global
 		{96594B49-84EF-4DA0-8E06-5E3F94E475D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96594B49-84EF-4DA0-8E06-5E3F94E475D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96594B49-84EF-4DA0-8E06-5E3F94E475D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A5CAEB-5BF1-4A86-B24A-AD92ADEC9766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A5CAEB-5BF1-4A86-B24A-AD92ADEC9766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A5CAEB-5BF1-4A86-B24A-AD92ADEC9766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A5CAEB-5BF1-4A86-B24A-AD92ADEC9766}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
