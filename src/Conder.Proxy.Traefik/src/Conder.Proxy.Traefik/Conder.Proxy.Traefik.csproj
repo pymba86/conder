@@ -6,6 +6,8 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\Conder\src\Conder\Conder.csproj" />
+        <ProjectReference Include="..\..\..\Conder.HTTP\src\Conder.HTTP\Conder.HTTP.csproj" />
+        <ProjectReference Include="..\..\..\Conder.Discovery.Consul\src\Conder.Discovery.Consul\Conder.Discovery.Consul.csproj" />
     </ItemGroup>
     
 </Project>
