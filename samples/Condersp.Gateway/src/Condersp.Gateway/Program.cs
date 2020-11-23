@@ -5,7 +5,7 @@ using Conder.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Condersp.Services.Gateway
+namespace Condersp.Gateway
 {
     public static class Program
     {
