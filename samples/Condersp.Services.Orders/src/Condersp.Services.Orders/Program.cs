@@ -1,5 +1,8 @@
 using System.Threading.Tasks;
+using Conder.Discovery.Consul;
 using Conder.Docs.Swagger;
+using Conder.LoadBalancing.Fabio;
+using Conder.Logging;
 using Conder.WebApi;
 using Conder.WebApi.Swagger;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +27,8 @@ namespace Conder.Samples.Services.Orders
                             .AddErrorHandler<ExceptionToResponseMapper>()
                             .AddWebApi()
                             .AddWebApiSwaggerDocs()
+                            .AddConsul()
+                            .AddFabio()
                             .Build())
                         .Configure(app => app
                             .UseConder()
@@ -33,7 +38,8 @@ namespace Conder.Samples.Services.Orders
                                 .Get("", ctx => ctx.Response.WriteAsync("Orders service"))
                                 .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
                             )
-                        );
+                        )
+                        .UseLogging();
                 });
     }
 }

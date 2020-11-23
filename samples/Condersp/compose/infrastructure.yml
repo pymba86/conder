@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  consul:
+    image: consul
+    container_name: consul
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - 8500:8500
+
+  fabio:
+    image: fabiolb/fabio
+    container_name: fabio
+    restart: unless-stopped
+    environment:
+      - FABIO_REGISTRY_CONSUL_ADDR=localhost:8500
+    network_mode: host
+    ports:
+      - 9998:9998
+      - 9999:9999
+
+networks:
+  condersp:
+    name: condersp-network
