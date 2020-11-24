@@ -100,6 +100,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF8192DE-44C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condersp.Services.Orders", "samples\Condersp.Services.Orders\src\Condersp.Services.Orders\Condersp.Services.Orders.csproj", "{BAB985C4-434C-417D-82CC-CB0E8262E132}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conder.Metrics.AppMetrics", "Conder.Metrics.AppMetrics", "{D5856B9F-2C4D-4BA2-A9B6-891D8C093B31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D096203C-030E-433D-9C17-3A1A28DE98AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conder.Metrics.AppMetrics", "src\Conder.Metrics.AppMetrics\src\Conder.Metrics.AppMetrics\Conder.Metrics.AppMetrics.csproj", "{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +160,9 @@ Global
 		{2AC474C2-4694-449C-949B-474E759F8845} = {398AB9CD-C7BD-4E7F-A02C-31089BDDD3F7}
 		{AF8192DE-44C0-40AB-8AC4-D5CD22FDD3D1} = {2AC474C2-4694-449C-949B-474E759F8845}
 		{BAB985C4-434C-417D-82CC-CB0E8262E132} = {AF8192DE-44C0-40AB-8AC4-D5CD22FDD3D1}
+		{D5856B9F-2C4D-4BA2-A9B6-891D8C093B31} = {B5E00040-EAA6-4C65-A736-7C010B542DC6}
+		{D096203C-030E-433D-9C17-3A1A28DE98AE} = {D5856B9F-2C4D-4BA2-A9B6-891D8C093B31}
+		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8} = {D096203C-030E-433D-9C17-3A1A28DE98AE}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C0A1CF7E-2F67-45EE-B538-38A3054F685E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -220,5 +229,9 @@ Global
 		{BAB985C4-434C-417D-82CC-CB0E8262E132}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAB985C4-434C-417D-82CC-CB0E8262E132}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAB985C4-434C-417D-82CC-CB0E8262E132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
