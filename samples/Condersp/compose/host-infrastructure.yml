@@ -6,8 +6,6 @@ services:
     container_name: consul
     restart: unless-stopped
     network_mode: host
-    ports:
-      - 8500:8500
 
   fabio:
     image: fabiolb/fabio
@@ -16,10 +14,15 @@ services:
     environment:
       - FABIO_REGISTRY_CONSUL_ADDR=localhost:8500
     network_mode: host
-    ports:
-      - 9998:9998
-      - 9999:9999
 
-networks:
-  condersp:
-    name: condersp-network
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    network_mode: host
+
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: unless-stopped
+    network_mode: host

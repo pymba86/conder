@@ -3,6 +3,7 @@ using Conder.Discovery.Consul;
 using Conder.Docs.Swagger;
 using Conder.LoadBalancing.Fabio;
 using Conder.Logging;
+using Conder.Metrics.AppMetrics;
 using Conder.WebApi;
 using Conder.WebApi.Swagger;
 using Microsoft.AspNetCore.Hosting;
@@ -29,14 +30,15 @@ namespace Conder.Samples.Services.Orders
                             .AddWebApiSwaggerDocs()
                             .AddConsul()
                             .AddFabio()
+                            .AddMetrics()
                             .Build())
                         .Configure(app => app
                             .UseConder()
                             .UseErrorHandler()
                             .UseSwaggerDocs()
+                            .UseMetrics()
                             .UseEndpoints(endpoints => endpoints
                                 .Get("", ctx => ctx.Response.WriteAsync("Orders service"))
-                                .Get("ping", ctx => ctx.Response.WriteAsync("pong"))
                             )
                         )
                         .UseLogging();
