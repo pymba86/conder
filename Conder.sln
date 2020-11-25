@@ -106,6 +106,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D096203C-030
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conder.Metrics.AppMetrics", "src\Conder.Metrics.AppMetrics\src\Conder.Metrics.AppMetrics\Conder.Metrics.AppMetrics.csproj", "{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conder.Metrics.Prometheus", "Conder.Metrics.Prometheus", "{8CDF2BB9-79C8-4930-9B57-28824CB85BF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4ABC6106-C204-41E6-BA41-7EC12B7D77E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conder.Metrics.Prometheus", "src\Conder.Metrics.Prometheus\src\Conder.Metrics.Prometheus\Conder.Metrics.Prometheus.csproj", "{C2AB7A25-B383-497A-9B91-EA76DA1D5EEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -163,6 +169,9 @@ Global
 		{D5856B9F-2C4D-4BA2-A9B6-891D8C093B31} = {B5E00040-EAA6-4C65-A736-7C010B542DC6}
 		{D096203C-030E-433D-9C17-3A1A28DE98AE} = {D5856B9F-2C4D-4BA2-A9B6-891D8C093B31}
 		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8} = {D096203C-030E-433D-9C17-3A1A28DE98AE}
+		{8CDF2BB9-79C8-4930-9B57-28824CB85BF2} = {B5E00040-EAA6-4C65-A736-7C010B542DC6}
+		{4ABC6106-C204-41E6-BA41-7EC12B7D77E9} = {8CDF2BB9-79C8-4930-9B57-28824CB85BF2}
+		{C2AB7A25-B383-497A-9B91-EA76DA1D5EEE} = {4ABC6106-C204-41E6-BA41-7EC12B7D77E9}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C0A1CF7E-2F67-45EE-B538-38A3054F685E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -233,5 +242,9 @@ Global
 		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{130EDFD3-3D7A-46B2-9AE7-7A510B6B10F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2AB7A25-B383-497A-9B91-EA76DA1D5EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2AB7A25-B383-497A-9B91-EA76DA1D5EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2AB7A25-B383-497A-9B91-EA76DA1D5EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2AB7A25-B383-497A-9B91-EA76DA1D5EEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

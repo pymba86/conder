@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Conder\src\Conder\Conder.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="prometheus-net" Version="3.6.0" />
+        <PackageReference Include="prometheus-net.AspNetCore" Version="3.6.0" />
+        <PackageReference Include="prometheus-net.AspNetCore.Grpc" Version="3.6.0" />
+        <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="3.6.0" />
+        <PackageReference Include="prometheus-net.DotNetRuntime" Version="3.4.0" />
+        <PackageReference Include="prometheus-net.SystemMetrics" Version="1.0.1" />
+    </ItemGroup>
+
+</Project>
