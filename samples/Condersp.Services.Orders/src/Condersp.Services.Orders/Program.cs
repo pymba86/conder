@@ -4,6 +4,7 @@ using Conder.Docs.Swagger;
 using Conder.LoadBalancing.Fabio;
 using Conder.Logging;
 using Conder.Metrics.AppMetrics;
+using Conder.Proxy.Traefik;
 using Conder.WebApi;
 using Conder.WebApi.Swagger;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace Conder.Samples.Services.Orders
                             .AddWebApiSwaggerDocs()
                             .AddConsul()
                             .AddFabio()
+                            .AddTraefik()
                             .AddMetrics()
                             .Build())
                         .Configure(app => app

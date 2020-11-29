@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Conder.Discovery.Consul.Models;
@@ -11,11 +12,14 @@ namespace Conder.Discovery.Consul.Services
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<ConsulHostedService> _logger;
+        private readonly IHostApplicationLifetime _appLifetime;
 
-        public ConsulHostedService(IServiceScopeFactory serviceScopeFactory, ILogger<ConsulHostedService> logger)
+        public ConsulHostedService(IServiceScopeFactory serviceScopeFactory, ILogger<ConsulHostedService> logger,
+            IHostApplicationLifetime appLifetime)
         {
             _serviceScopeFactory = serviceScopeFactory;
             _logger = logger;
+            _appLifetime = appLifetime;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
@@ -30,11 +34,20 @@ namespace Conder.Discovery.Consul.Services
             if (response.IsSuccessStatusCode)
             {
                 _logger.LogInformation($"Registered a service [id: {registration.Id}] in Consul. ");
+                
+                _appLifetime.ApplicationStopping.Register(OnStopped);
+                
                 return;
             }
 
             _logger.LogError("There was an error when registering a service" +
                              $" [id: {registration.Id}] in Consul. {response}");
+        }
+
+        private void OnStopped()
+        {
+            _logger.LogInformation("Window will close automatically in 20 seconds.");
+            Task.Delay(10000).GetAwaiter().GetResult();
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
@@ -49,6 +62,7 @@ namespace Conder.Discovery.Consul.Services
             if (response.IsSuccessStatusCode)
             {
                 _logger.LogInformation($"Unregistered a service [id: {registration.Id}] from Consul.");
+
                 return;
             }
 

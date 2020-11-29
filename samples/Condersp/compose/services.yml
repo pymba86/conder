@@ -1,0 +1,16 @@
+version: "3.5"
+
+services:
+  orders-service:
+    image: orders-service:latest
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.role == manager ]
+    networks:
+      - condersp
+
+networks:
+  condersp:
+    external: true

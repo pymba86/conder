@@ -7,6 +7,15 @@ services:
     restart: unless-stopped
     network_mode: host
 
+  traefik:
+    image: traefik:v2.3
+    container_name: traefik
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./host-traefik/traefik.yml:/traefik.yml:ro
+
   fabio:
     image: fabiolb/fabio
     container_name: fabio

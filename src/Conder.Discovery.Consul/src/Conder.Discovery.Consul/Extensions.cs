@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using Conder.Discovery.Consul.Builders;
 using Conder.Discovery.Consul.Http;
 using Conder.Discovery.Consul.MessageHandlers;
 using Conder.Discovery.Consul.Models;
 using Conder.Discovery.Consul.Services;
 using Conder.HTTP;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Conder.Discovery.Consul
@@ -101,12 +106,17 @@ namespace Conder.Discovery.Consul
             {
                 serviceId = serviceProvider.GetRequiredService<IServiceId>().Id;
             }
+            
+            var name = Dns.GetHostName();
+            var ip = Dns.GetHostEntry(name).AddressList
+                .FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
+
 
             var registration = new ServiceRegistration
             {
                 Name = options.Service,
                 Id = $"{options.Service}:{serviceId}",
-                Address = options.Address,
+                Address = ip?.ToString(),
                 Port = options.Port,
                 Tags = options.Tags,
                 Meta = options.Meta,
@@ -133,7 +143,7 @@ namespace Conder.Discovery.Consul
             {
                 Interval = ParseTime(options.PingInterval),
                 DeregisterCriticalServiceAfter = ParseTime(options.RemoveAfterInterval),
-                Http = $"{scheme}{options.Address}{(options.Port > 0 ? $":{options.Port}" : string.Empty)}" +
+                Http = $"{scheme}{ip}{(options.Port > 0 ? $":{options.Port}" : string.Empty)}" +
                        $"{pingEndpoint}"
             };
             registration.Checks = new[] {check};

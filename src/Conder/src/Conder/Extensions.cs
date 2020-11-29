@@ -4,6 +4,7 @@ using Conder.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Conder
 {
@@ -26,6 +27,9 @@ namespace Conder
 
             services.AddSingleton(options);
             services.AddSingleton<IServiceId, ServiceId>();
+            
+            services.Configure<HostOptions>(host =>
+                host.ShutdownTimeout = TimeSpan.FromSeconds(options.ShutdownTimeout));
 
             if (!options.DisplayBanner || string.IsNullOrWhiteSpace(options.Name))
             {

@@ -6,11 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\..\src\Conder.WebApi\src\Conder.WebApi\Conder.WebApi.csproj"/>
-        <ProjectReference Include="..\..\..\..\src\Conder\src\Conder\Conder.csproj"/>
-        <ProjectReference Include="..\..\..\..\src\Conder.WebApi.Swagger\src\Conder.WebApi.Swagger\Conder.WebApi.Swagger.csproj"/>
-        <ProjectReference Include="..\..\..\..\src\Conder.Discovery.Consul\src\Conder.Discovery.Consul\Conder.Discovery.Consul.csproj"/>
-        <ProjectReference Include="..\..\..\..\src\Conder.LoadBalancing.Fabio\src\Conder.LoadBalancing.Fabio\Conder.LoadBalancing.Fabio.csproj"/>
+        <ProjectReference Include="..\..\..\..\src\Conder.WebApi\src\Conder.WebApi\Conder.WebApi.csproj" />
+        <ProjectReference Include="..\..\..\..\src\Conder\src\Conder\Conder.csproj" />
+        <ProjectReference Include="..\..\..\..\src\Conder.WebApi.Swagger\src\Conder.WebApi.Swagger\Conder.WebApi.Swagger.csproj" />
+        <ProjectReference Include="..\..\..\..\src\Conder.Discovery.Consul\src\Conder.Discovery.Consul\Conder.Discovery.Consul.csproj" />
+        <ProjectReference Include="..\..\..\..\src\Conder.LoadBalancing.Fabio\src\Conder.LoadBalancing.Fabio\Conder.LoadBalancing.Fabio.csproj" />
+        <ProjectReference Include="..\..\..\..\src\Conder.Proxy.Traefik\src\Conder.Proxy.Traefik\Conder.Proxy.Traefik.csproj" />
         <ProjectReference Include="..\..\..\..\src\Conder.Logging\src\Conder.Logging\Conder.Logging.csproj" />
         <ProjectReference Include="..\..\..\..\src\Conder.Metrics.AppMetrics\src\Conder.Metrics.AppMetrics\Conder.Metrics.AppMetrics.csproj" />
     </ItemGroup>

@@ -95,6 +95,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condersp.Gateway", "samples\Condersp.Gateway\src\Condersp.Gateway\Condersp.Gateway.csproj", "{C1F4DE58-3F01-4A6A-8303-BDCE6AE9CB17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Condersp.Services.Orders", "Condersp.Services.Orders", "{2AC474C2-4694-449C-949B-474E759F8845}"
+ProjectSection(SolutionItems) = preProject
+	samples\Condersp.Services.Orders\Dockerfile = samples\Condersp.Services.Orders\Dockerfile
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF8192DE-44C0-40AB-8AC4-D5CD22FDD3D1}"
 EndProject

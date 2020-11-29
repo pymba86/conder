@@ -1,0 +1,78 @@
+version: "3.5"
+
+services:
+  consul:
+    image: consul
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - condersp
+    ports:
+      - target: 8500
+        published: 8500
+        mode: host
+
+  traefik:
+    image: traefik:v2.3
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - condersp
+    ports:
+      - target: 80
+        published: 80
+        mode: host
+      - target: 8080
+        published: 8080
+        mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/traefik.yml:ro
+
+  fabio:
+    image: fabiolb/fabio
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    environment:
+      - FABIO_REGISTRY_CONSUL_ADDR=consul:8500
+    networks:
+      - condersp
+    ports:
+      - target: 9998
+        published: 9998
+        mode: host
+      - target: 9999
+        published: 9999
+        mode: host
+
+  grafana:
+    image: grafana/grafana
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - condersp
+    ports:
+      - 3000:3000
+
+  influxdb:
+    image: influxdb
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - condersp
+    ports:
+      - 8086:8086
+
+networks:
+  condersp:
+    external: true
