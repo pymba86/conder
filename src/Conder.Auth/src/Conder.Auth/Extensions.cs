@@ -1,5 +1,7 @@
 ﻿using System;
+using Conder.Auth.Handlers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Conder.Auth
 {
@@ -23,6 +25,13 @@ namespace Conder.Auth
         private static IConderBuilder AddJwt(this IConderBuilder builder, JwtOptions options,
             Action<JwtBearerOptions> optionsFactory = null)
         {
+            if (!builder.TryRegister(RegistryName))
+            {
+                return builder;
+            }
+
+            builder.Services.AddSingleton<IJwtHandler, JwtHandler>();
+
             return builder;
         }
     }
