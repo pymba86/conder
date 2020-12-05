@@ -8,6 +8,7 @@ namespace Conder.Discovery.Consul
         public string Url { get; set; }
         public string Service { get; set; }
         public string Address { get; set; }
+        public bool DnsAddress { get; set; }
         public int Port { get; set; }
         public bool PingEnabled { get; set; }
         public string PingEndpoint { get; set; }
@@ -18,6 +19,7 @@ namespace Conder.Discovery.Consul
         public bool EnableTagOverride { get; set; }
         public bool SkipLocalhostDockerDnsReplace { get; set; }
         public ConnectOptions Connect { get; set; }
+        public double UnregisterTimeout { get; set; }
 
         public class ConnectOptions
         {

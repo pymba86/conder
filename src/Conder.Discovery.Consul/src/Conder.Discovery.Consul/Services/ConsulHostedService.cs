@@ -46,8 +46,18 @@ namespace Conder.Discovery.Consul.Services
 
         private void OnStopped()
         {
-            _logger.LogInformation("Window will close automatically in 20 seconds.");
-            Task.Delay(10000).GetAwaiter().GetResult();
+            using var scope = _serviceScopeFactory.CreateScope();
+            var consulOptions = scope.ServiceProvider.GetRequiredService<ConsulOptions>();
+            
+            if (consulOptions.UnregisterTimeout > 0)
+            {
+                _logger.LogInformation("Consul will unregister automatically" +
+                                       $" in {consulOptions.UnregisterTimeout} seconds.");
+                
+                var timeout = TimeSpan.FromSeconds(consulOptions.UnregisterTimeout);
+                
+                Task.Delay(timeout).GetAwaiter().GetResult();
+            }
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)

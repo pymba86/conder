@@ -33,19 +33,19 @@ namespace Conder.Discovery.Consul
             var httpClientOptions = builder.GetOptions<HttpClientOptions>(httpClientSectionName);
             return builder.AddConsul(consulOptions, httpClientOptions);
         }
-        
+
         public static IConderBuilder AddConsul(this IConderBuilder builder,
             Func<IConsulOptionsBuilder, IConsulOptionsBuilder> buildOptions, HttpClientOptions httpClientOptions)
         {
             var options = buildOptions(new ConsulOptionsBuilder()).Build();
             return builder.AddConsul(options, httpClientOptions);
         }
-        
+
         public static IConderBuilder AddConsul(this IConderBuilder builder, ConsulOptions options,
             HttpClientOptions httpClientOptions)
         {
             builder.Services.AddSingleton(options);
-            
+
             if (!options.Enabled || !builder.TryRegister(RegistryName))
             {
                 return builder;
@@ -72,7 +72,7 @@ namespace Conder.Discovery.Consul
 
             return builder;
         }
-        
+
         private static ServiceRegistration CreateConsulAgentRegistration(this IConderBuilder builder,
             ConsulOptions options)
         {
@@ -88,12 +88,6 @@ namespace Conder.Discovery.Consul
                 return null;
             }
 
-            if (string.IsNullOrWhiteSpace(options.Address))
-            {
-                throw new ArgumentException("Consul address can not be empty.",
-                    nameof(options.PingEndpoint));
-            }
-
             builder.Services.AddHttpClient<IConsulService, ConsulService>(c => c.BaseAddress = new Uri(options.Url));
 
             if (builder.Services.All(x => x.ServiceType != typeof(ConsulHostedService)))
@@ -106,17 +100,32 @@ namespace Conder.Discovery.Consul
             {
                 serviceId = serviceProvider.GetRequiredService<IServiceId>().Id;
             }
-            
-            var name = Dns.GetHostName();
-            var ip = Dns.GetHostEntry(name).AddressList
-                .FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
 
+            string address;
+
+            if (options.DnsAddress)
+            {
+                var name = Dns.GetHostName();
+                address = Dns.GetHostEntry(name).AddressList
+                    .FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork)
+                    ?.ToString();
+            }
+            else
+            {
+                address = options.Address;
+            }
+            
+            if (string.IsNullOrWhiteSpace(address))
+            {
+                throw new ArgumentException("Consul address can not be empty.",
+                    nameof(options.PingEndpoint));
+            }
 
             var registration = new ServiceRegistration
             {
                 Name = options.Service,
                 Id = $"{options.Service}:{serviceId}",
-                Address = ip?.ToString(),
+                Address = address,
                 Port = options.Port,
                 Tags = options.Tags,
                 Meta = options.Meta,
@@ -128,7 +137,7 @@ namespace Conder.Discovery.Consul
             {
                 return registration;
             }
-            
+
             var pingEndpoint = string.IsNullOrWhiteSpace(options.PingEndpoint) ? string.Empty :
                 options.PingEndpoint.StartsWith("/") ? options.PingEndpoint : $"/{options.PingEndpoint}";
             if (pingEndpoint.EndsWith("/"))
@@ -136,21 +145,21 @@ namespace Conder.Discovery.Consul
                 pingEndpoint = pingEndpoint.Substring(0, pingEndpoint.Length - 1);
             }
 
-            var scheme = options.Address.StartsWith("http", StringComparison.InvariantCultureIgnoreCase)
+            var scheme = address.StartsWith("http", StringComparison.InvariantCultureIgnoreCase)
                 ? string.Empty
                 : "http://";
             var check = new ServiceCheck
             {
                 Interval = ParseTime(options.PingInterval),
                 DeregisterCriticalServiceAfter = ParseTime(options.RemoveAfterInterval),
-                Http = $"{scheme}{ip}{(options.Port > 0 ? $":{options.Port}" : string.Empty)}" +
+                Http = $"{scheme}{address}{(options.Port > 0 ? $":{options.Port}" : string.Empty)}" +
                        $"{pingEndpoint}"
             };
             registration.Checks = new[] {check};
 
             return registration;
         }
-        
+
         private static string ParseTime(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
