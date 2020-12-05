@@ -5,7 +5,7 @@ services:
     image: orders-service:latest
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 3
       placement:
         constraints: [ node.role == manager ]
     networks:

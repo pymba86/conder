@@ -27,6 +27,9 @@ namespace Conder.Discovery.Consul.Services
             using var scope = _serviceScopeFactory.CreateScope();
             var consulService = scope.ServiceProvider.GetRequiredService<IConsulService>();
             var registration = scope.ServiceProvider.GetRequiredService<ServiceRegistration>();
+
+            _logger.LogInformation("Consul hosted service start...");
+            
             _logger.LogInformation($"Registering a service [id: {registration.Id}] in Consul...");
 
             var response = await consulService.RegisterServiceAsync(registration);
@@ -34,51 +37,56 @@ namespace Conder.Discovery.Consul.Services
             if (response.IsSuccessStatusCode)
             {
                 _logger.LogInformation($"Registered a service [id: {registration.Id}] in Consul. ");
-                
-                _appLifetime.ApplicationStopping.Register(OnStopped);
-                
-                return;
-            }
 
-            _logger.LogError("There was an error when registering a service" +
-                             $" [id: {registration.Id}] in Consul. {response}");
+                _appLifetime.ApplicationStopping.Register(OnStopped);
+            }
+            else
+            {
+                _logger.LogError("There was an error when registering a service" +
+                                 $" [id: {registration.Id}] in Consul. {response}");
+            }
         }
 
         private void OnStopped()
         {
             using var scope = _serviceScopeFactory.CreateScope();
+                
             var consulOptions = scope.ServiceProvider.GetRequiredService<ConsulOptions>();
-            
-            if (consulOptions.UnregisterTimeout > 0)
-            {
-                _logger.LogInformation("Consul will unregister automatically" +
-                                       $" in {consulOptions.UnregisterTimeout} seconds.");
-                
-                var timeout = TimeSpan.FromSeconds(consulOptions.UnregisterTimeout);
-                
-                Task.Delay(timeout).GetAwaiter().GetResult();
-            }
-        }
-
-        public async Task StopAsync(CancellationToken cancellationToken)
-        {
-            using var scope = _serviceScopeFactory.CreateScope();
             var consulService = scope.ServiceProvider.GetRequiredService<IConsulService>();
             var registration = scope.ServiceProvider.GetRequiredService<ServiceRegistration>();
+
             _logger.LogInformation($"Unregistering a service [id: {registration.Id}] from Consul...");
 
-            var response = await consulService.DeregisterServiceAsync(registration.Id);
+            var response = consulService.DeregisterServiceAsync(registration.Id)
+                .GetAwaiter().GetResult();
 
             if (response.IsSuccessStatusCode)
             {
                 _logger.LogInformation($"Unregistered a service [id: {registration.Id}] from Consul.");
 
-                return;
-            }
+                if (consulOptions.UnregisterTimeout > 0)
+                {
+                    _logger.LogInformation("Consul will unregister automatically" +
+                                           $" in {consulOptions.UnregisterTimeout} seconds.");
 
-            _logger.LogError(
-                $"There was an error when unregistering a service [id: {registration.Id}]" +
-                $" from Consul. {response}");
+                    var timeout = TimeSpan.FromSeconds(consulOptions.UnregisterTimeout);
+
+                    Task.Delay(timeout).GetAwaiter().GetResult();
+                }
+            }
+            else
+            {
+                _logger.LogError(
+                    $"There was an error when unregistering a service [id: {registration.Id}]" +
+                    $" from Consul. {response}");
+            }
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Consul hosted service finish...");
+
+            return Task.CompletedTask;
         }
     }
 }

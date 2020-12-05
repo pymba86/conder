@@ -3,4 +3,4 @@ COPY ./out /out
 WORKDIR /out
 ENV ASPNETCORE_URLS http://*:80
 ENV ASPNETCORE_ENVIRONMENT docker
-ENTRYPOINT dotnet Condersp.Services.Orders.dll
+ENTRYPOINT ["dotnet", "Condersp.Services.Orders.dll"]
